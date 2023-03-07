@@ -1,17 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
+import { Outlet } from 'src/outlets/schema/outlets.schema';
+import { OutletsService } from 'src/outlets/service/outlets/outlets.service';
 
-@Controller('')
+@Controller('home')
 export class HomeController {
-    @Get('')
-    displayHome(){
-        return 'Home';
-    }
-    @Get('users')
-    displayUsers(){
-        return ['User1', 'User2'];
-    }
-    @Get('user')
-    displayUser(){
-        return 'User1';
+    constructor(private outletService : OutletsService){}
+    @Get('showOutletsToUser/:userId')
+    async getOutlets(@Param('userId') userId : string) : Promise<Outlet[]>{
+        return await this.outletService.showAllOutlets();
     }
 }

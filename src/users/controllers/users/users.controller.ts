@@ -6,11 +6,11 @@ import { User } from 'src/users/schema/users.schema';
 import { UsersService } from 'src/users/service/users/users.service';
 import userInfoDto from 'src/users/userInfoDto';
 
-@Controller('users')
+@Controller()
 export class UsersController {
     constructor(private userService : UsersService){}
 
-    @Get()
+    @Get('users')
     async getUsers() : Promise<User[]>{
         return await this.userService.showAllUsers();
     }
@@ -20,7 +20,7 @@ export class UsersController {
     //     return this.userService.returnUserInfo(name);
     // }
 
-    @Post()
+    @Post('users')
     async addUser(@Res() response, @Body() user : User){
         const newUser = await this.userService.addUser(user);
         return response.status(HttpStatus.CREATED).json({

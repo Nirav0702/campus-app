@@ -10,13 +10,13 @@ import { CategoryService } from "../service/categories/categories.service";
 export class CategoriesController{
     constructor(private categoryService : CategoryService){}
 
-    @Get(':outletId')
+    @Get('showCategories/:outletId')
     async getCategories(@Param("outletId") outletId : string) : Promise<Category[]>{
         return await this.categoryService.showAllCategories(outletId);
     }
 
-    @Post(':outletId')
-    async addCategory(@Param("outletId") outletId : string, @Res() response, @Body() category : Category,) : Promise<Category>{
+    @Post('addCategory/:outletId')
+    async addCategory(@Param("outletId") outletId : string, @Res() response, @Body() category : Category) : Promise<Category>{
         category.outletId = outletId;
         const newCategory = await this.categoryService.addCategory(category);
         return response.status(HttpStatus.CREATED).json({
