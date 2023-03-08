@@ -17,6 +17,9 @@ export class User{
     @Prop()
     age : number;
 
+    @Prop()
+    type : string;
+
     // @Prop([String])
     // documents : string[];
 }
