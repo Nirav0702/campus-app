@@ -6,8 +6,8 @@ import { Category, CategoryDocument } from "src/categories/schema/categories.sch
 @Injectable()
 export class CategoryService{
     constructor(@InjectModel(Category.name) private categoryModel : Model<CategoryDocument>){}
-    async showAllCategories(outletId : string) : Promise<Category[]>{
-        return await this.categoryModel.find({where: {"outletId" : outletId}} );
+    async showAllCategoriesOfOutlet(outletId : string) : Promise<Category[]>{
+        return await this.categoryModel.find({"outletId" : outletId}).lean();
     }
 
     async addCategory(category : Category) : Promise<Category>{
