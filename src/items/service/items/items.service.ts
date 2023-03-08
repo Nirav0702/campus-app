@@ -8,11 +8,11 @@ export class ItemService{
     constructor(@InjectModel(Item.name) private itemModel : Model<ItemDocument>){}
     
     async showAllItemsOfAParticularOutlet(outletId : string) : Promise<Item[]>{
-        return await this.itemModel.find({where: {"outletId" : outletId}});
+        return await this.itemModel.find({"outletId" : outletId});
     }
 
     async showAllItemsOfAParticularCategory(categoryId : string) : Promise<Item[]>{
-        return await this.itemModel.find({where : {"categoryId" : categoryId}});
+        return await this.itemModel.find({"categoryId" : categoryId});
     }
 
     async addItem(item : Item) : Promise<Item>{

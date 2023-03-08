@@ -12,7 +12,7 @@ export class CategoriesController{
 
     @Get('showCategories/:outletId')
     async getCategories(@Param("outletId") outletId : string) : Promise<Category[]>{
-        return await this.categoryService.showAllCategories(outletId);
+        return await this.categoryService.showAllCategoriesOfOutlet(outletId);
     }
 
     @Post('addCategory/:outletId')
