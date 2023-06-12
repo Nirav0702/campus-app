@@ -14,6 +14,11 @@ export class UsersService{
     async showAllUsers() : Promise<User[]>{
         return await this.userModel.find();
     }
+
+    async getUser(userId: string) : Promise<User>{
+        return await this.userModel.findById(userId);
+    }
+
     // async updateUser(userId: string, oldUser : User) : Promise<string>{
     //     //const newUser = await this.userModel.findOneAndReplace({_id : userId}, oldUser)
     //     return "";
