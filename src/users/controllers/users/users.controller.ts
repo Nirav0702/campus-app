@@ -28,6 +28,11 @@ export class UsersController {
         });
     }
 
+    @Get('users/getUserDetails/:userId')
+    async getUserDetails(@Param("userId") userId: string) : Promise<User>{
+        return await this.userService.getUser(userId);
+    }
+
     // @Patch()
     // async updateUser(@Res() response, @Body() user: User){
     //     return this.updateUser("userId", user)

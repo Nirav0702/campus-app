@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import orderFoodContents, { orderStatus } from "../dto/ordersDto";
+import { orderFoodContents, orderStatus } from "../dto/ordersDto";
 
 export type OrderDocument = Order & Document;
 

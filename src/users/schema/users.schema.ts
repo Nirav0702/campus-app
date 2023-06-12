@@ -5,8 +5,6 @@ export type UserDocument = User & Document;
 
 @Schema({collection : 'users'})
 export class User{
-    // @Prop()
-    // userId : string;
 
     @Prop()
     name : string;
@@ -15,13 +13,13 @@ export class User{
     emailId : string;
 
     @Prop()
+    phone: string;
+
+    @Prop()
     age : number;
 
     @Prop()
     type : string;
-
-    // @Prop([String])
-    // documents : string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
