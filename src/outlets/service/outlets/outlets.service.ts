@@ -13,4 +13,7 @@ export class OutletsService{
     async showAllOutlets() : Promise<Outlet[]>{
         return await this.outletModel.find();
     }
+    async getUser(outletId: string) : Promise<Outlet>{
+        return await this.outletModel.findById(outletId);
+    }
 }
