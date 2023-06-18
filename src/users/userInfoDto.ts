@@ -1,6 +1,9 @@
-interface userInfoDto {
+export interface userInfoDto {
     username : string
     email : string
 }
 
-export default userInfoDto;
+export interface userCredentials {
+    username : string;
+    password : string;
+}

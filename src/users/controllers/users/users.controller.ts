@@ -4,7 +4,7 @@ import { get } from 'http';
 import { Http2ServerResponse } from 'http2';
 import { User } from 'src/users/schema/users.schema';
 import { UsersService } from 'src/users/service/users/users.service';
-import userInfoDto from 'src/users/userInfoDto';
+import { userCredentials } from 'src/users/userInfoDto';
 
 @Controller()
 export class UsersController {
@@ -31,6 +31,16 @@ export class UsersController {
     @Get('users/getUserDetails/:userId')
     async getUserDetails(@Param("userId") userId: string) : Promise<User>{
         return await this.userService.getUser(userId);
+    }
+
+    @Post('users/login')
+    async getUserToken(@Body() userCreds: userCredentials) : Promise<any>{
+        const userDetails = await this.userService.verifyUser(userCreds)
+        return {
+            token: "AllowLogin",
+            userId: userDetails.type == 'outlet' ? userDetails.outletId : userDetails._id,
+            userType: userDetails.type
+        };
     }
 
     // @Patch()
